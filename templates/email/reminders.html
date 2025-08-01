@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Start Page</title>
+  </head>
+  <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: white;">
+    <!-- Main Content -->
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" ov>
+      <tr>
+        <td style="padding: 20px;">
+          <!-- Email Content -->
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <!-- Event Banner -->
+            <tr>
+              <td>
+                <img
+                  src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200&h=300&fit=crop"
+                  alt="Live Event Banner"
+                  style="width: 100%; height: 200px; border-radius: 10px; object-fit: cover; margin-bottom: 20px;"
+                />
+              </td>
+            </tr>
+            <!-- Heading -->
+            <tr>
+              <td>
+                {% if time_before == 0 %}
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <h1 style="font-size: 1.8rem; font-weight: black; color: #7859a8; margin-bottom: 10px;">
+                    Your Event is Live Now: {{ event}}
+                  </h1>
+                </div>
+                {% else %}
+                <h1 style="font-size: 1.8rem; font-weight: black; color: #7859a8; margin-bottom: 10px;">
+                  Your Event Starts in {{ time_before }} minutes: {{ event }}
+                </h1>
+                {% endif %}
+              </td>
+            </tr>
+            <!-- Greeting -->
+            <tr>
+              <td>
+                <p style="color: #374151; font-size: 16px;">Dear {{ name }},</p>
+            
+                {% if time_before > 0 %}
+                  <p style="color: #374151; font-size: 16px;">
+                    This is a reminder that <strong style="font-weight: 600;">{{ event }}</strong> starts in {{ time_before }} minutes.
+                  </p>
+                {% else %}
+                  <p style="color: #374151; font-size: 16px;">
+                    Your registered event <strong style="font-weight: 600;">{{ event }}</strong> has started. Join now to participate in this interactive session!
+                  </p>
+                {% endif %}
+              </td>
+            </tr>
+            
+            <!-- Event Details -->
+            <tr>
+              <td style="width:100%; background: linear-gradient(to bottom right, #e8f0fe, #f3e8ff); padding: 20px; border-radius: 10px; margin-top: 20px; ">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="vertical-align: middle; padding-bottom: 15px;">
+                      <img
+                        src="https://img.icons8.com/?size=100&id=88171&format=png&color=1e40af"
+                        style="height: 20px; width: 20px; vertical-align: middle;"
+                      />
+                      <span style="font-size: 16px; color: #1e40af;">{{ event }}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    
+                    <td style="vertical-align: middle; padding-bottom: 15px;">
+                      <img
+                        src="https://img.icons8.com/?size=100&id=84997&format=png&color=1e40af"
+                        style="height: 22px; width: 22px; vertical-align: middle;"
+                      />
+                      <span style="font-size: 16px; color: #1e40af;">{{ time }}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    {% if time_before == 0 %}
+                    <td style="vertical-align: middle; padding-bottom: 15px;">
+                      <img
+                        src="https://img.icons8.com/?size=100&id=82767&format=png&color=1e40af"
+                        style="height: 22px; width: 22px; vertical-align: middle;"
+                      />
+                      <span style="font-size: 16px; color: #1e40af;">Live Now</span>
+                    </td>
+                    {% endif %}
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <!-- Join Event Button -->
+            {% if time_before == 0 %}
+            <tr>
+              <td style="text-align: center; padding: 30px 0;">
+                <a
+                  href="{{ url }}"
+                  style="background: linear-gradient(to right, #7859a8, #a42f9b); color: white; padding: 15px 20px; border: none; border-radius: 50px; cursor: pointer; font-size: 15px; font-weight: 600; text-decoration: none; display: inline-block; margin-top: 10px;"
+                >
+                  Join Event Now
+                  <img
+                    src="https://img.icons8.com/?size=100&id=84891&format=png&color=ffffff"
+                    style="height: 20px; width: 20px; vertical-align: middle; margin-left: 8px;"
+                  />
+                </a>
+              </td>
+            </tr>
+            {% endif %}
+
+            <!-- Trouble Accessing Event -->
+            <tr>
+              <td align="center">
+                <table cellpadding="0" cellspacing="0" border="0" style="background: #fff3cd; padding: 10px; border-radius: 5px; display: inline-block; width: 100%;">
+                  <tr>
+                    <td style="vertical-align: middle;">
+                      <img
+                        src="https://img.icons8.com/?size=100&id=3156&format=png&color=333333"
+                        alt="alert"
+                        style="height: 20px; width: 20px; vertical-align: middle;"
+                      />
+                    </td>
+                    <td style="vertical-align: middle; padding-left: 10px;">
+                      <p style="font-size: 16px; margin: 0; color: #b45309;">
+                        Having trouble joining? Contact our support team at{" "}
+                       <a
+                    href="mailto:info"
+                    style="color: #9e77ed; text-decoration: none;"
+                  >
+                  </a>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <!-- Quick Tips -->
+            <tr style="">
+              <td style="margin: 20px 0px; padding-top: 20px; display:inline-block;">
+                <h3 style="font-size: 1.2rem; font-weight: bold; color: #111827; margin-bottom: 10px;">Quick Tips Before Joining:</h3>
+                <ul style="list-style-type: disc; list-style-position: inside; color: #374151; font-size: 16px; padding: 0; margin: 0;">
+                    <li style="margin-left: 0; padding-left: 0;">Ensure stable internet connection</li>
+                    <li style="margin-left: 0; padding-left: 0;">Test your audio and video</li>
+                    <li style="margin-left: 0; padding-left: 0;">Keep your learning materials ready</li>
+                </ul>
+
+              </td>
+            </tr>
+            <!-- Closing Message -->
+            <tr>
+              <td style="border-top: 1px solid #ddd; padding-top: 20px;">
+                <p style="color: #374151; font-size: 16px;">See you in the session!</p>
+                <p style="color: #374151; font-size: 16px; margin-top: 10px;">Best regards,</p>
+                 <p style="color: #9e77ed; font-size: 16px;">The Appoimnent App Team 💜</p>
+              </td>
+            </tr>
+            <!-- Footer -->
+            <tr>
+              <td style="width: 100%; padding: 40px 0px; border-top: 1px solid #ddd; text-align: center;">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td>
+                      <!-- Social Icons -->
+                      <a
+                        href="#"
+                        target="_blank"
+                        style="text-decoration: none;"
+                      >
+                        <img
+                          src="https://img.icons8.com/?size=100&id=8818&format=png&color=7859A8"
+                          alt="facebook"
+                          style="height: 35px; width: 35px; margin: 0 5px;"
+                        />
+                      </a>
+                      <a
+                        href="https://twitter.com/mlh_tc4a"
+                        target="_blank"
+                        style="text-decoration: none;"
+                      >
+                        <img
+                          src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=7859A8"
+                          alt="facebook"
+                          style="height: 35px; width: 35px; margin: 0 5px;"
+                        />
+                      </a>
+                      <a
+                        href="#"
+                        target="_blank"
+                        style="text-decoration: none;"
+                      >
+                        <img
+                          src="https://img.icons8.com/?size=100&id=32309&format=png&color=7859A8"
+                          alt="instagram"
+                          style="height: 35px; width: 35px; margin: 0 5px;"
+                        />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/company/medical-learning-hub/"
+                        target="_blank"
+                        style="text-decoration: none;"
+                      >
+                        <img
+                          src="https://img.icons8.com/?size=100&id=ZmG5l3ueI6FO&format=png&color=7859A8"
+                          alt="facebook"
+                          style="height: 35px; width: 35px; margin: 0 5px;"
+                        />
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p style="color: #7859a8;">
+                        <a
+                          href="#"
+                          target="_blank"
+                          style="color: #7859a8; text-decoration: none;"
+                        >
+                          About us
+                        </a>
+                        |
+                        <a
+                          href="#"
+                          target="_blank"
+                          style="color: #7859a8; text-decoration: none;"
+                        >
+                          Privacy
+                        </a>
+                        |
+                        <a
+                          href="#"
+                          target="_blank"
+                          style="color: #7859a8; text-decoration: none;"
+                        >
+                          Help center
+                        </a>
+                      </p>
+                      <p style="color: #7859a8;">&copy; Appointment App. All rights reserved.</p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+	

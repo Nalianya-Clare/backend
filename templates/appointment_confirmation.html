@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointment Confirmation</title>
+  </head>
+  <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: white; margin-left: auto; margin-right: auto;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td style="padding: 20px;">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <!-- Appointment Banner -->
+            <tr>
+              <td>
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&h=300&fit=crop"
+                  alt="Appointment Banner"
+                  style="width: 100%; height: 200px; border-radius: 10px; object-fit: cover; margin-bottom: 20px;"
+                />
+              </td>
+            </tr>
+
+            <!-- Heading -->
+            <tr>
+              <td>
+                <h1 style="font-size: 1.8rem; color: #FF97B0; margin-bottom: 10px;">
+                  Your Appointment is Confirmed!
+                </h1>
+              </td>
+            </tr>
+
+            <!-- Greeting -->
+            <tr>
+              <td>
+                <p style="color: #374151; font-size: 16px;">Dear {{ patient_name }},</p>
+                <p style="color: #374151; font-size: 16px;">
+                  Your appointment with <strong>Dr. {{ doctor_name }}</strong> has been successfully scheduled. Below are your appointment details:
+                </p>
+              </td>
+            </tr>
+
+            <!-- Appointment Details -->
+            <tr>
+              <td style="background: #ffe4ec; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <h2 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; color: #d63384;">Appointment Details</h2>
+                
+                <table cellpadding="5" style="width: 100%;">
+                  <tr>
+                    <td style="width: 30%; color: #6c757d;">Date:</td>
+                    <td style="font-weight: bold;">{{ appointment_date }}</td>
+                  </tr>
+                  <tr>
+                    <td style="color: #6c757d;">Time:</td>
+                    <td style="font-weight: bold;">{{ appointment_time }}</td>
+                  </tr>
+                  <tr>
+                    <td style="color: #6c757d;">Type:</td>
+                    <td style="font-weight: bold;">
+                      {% if is_virtual %}Virtual Consultation{% else %}In-Person Visit{% endif %}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="color: #6c757d;">Location:</td>
+                    <td style="font-weight: bold;">
+                      {% if is_virtual %}Online (Link Below){% else %}{{ location }}{% endif %}
+                    </td>
+                  </tr>
+                </table>
+
+                {% if is_virtual and meeting_link %}
+                <div style="margin-top: 25px; text-align: center;">
+                  <a href="{{ meeting_link }}"
+                    style="background: #FF97B0; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 15px; display: inline-block;">
+                    Join Virtual Consultation
+                  </a>
+                  <p style="color: #6c757d; font-size: 13px; margin-top: 10px;">
+                    <em>This link will become active 15 minutes before your appointment time.</em>
+                  </p>
+                </div>
+                {% endif %}
+              </td>
+            </tr>
+          
+            <!-- Preparation Tips -->
+            <tr>
+              <td style="background-color: #f9fafb; padding: 20px; border-radius: 10px; margin-top: 30px;">
+                <h2 style="color: #111827; font-size: 1.2rem; font-weight: bold;">
+                  <img src="https://img.icons8.com/?size=100&id=84851&format=png&color=333333"
+                    style="height: 20px; vertical-align: middle; margin-right: 10px;" />
+                  How to Prepare
+                </h2>
+                <ul style="color: #374151; font-size: 16px; padding-left: 20px;">
+                  <li>Have your medical history ready</li>
+                  <li>Prepare any questions for your doctor</li>
+                  {% if is_virtual %}
+                  <li>Test your camera and microphone beforehand</li>
+                  <li>Find a quiet, private space for your consultation</li>
+                  {% else %}
+                  <li>Arrive 10 minutes early for paperwork</li>
+                  <li>Bring your insurance card and ID</li>
+                  {% endif %}
+                </ul>
+              </td>
+            </tr>
+
+            <!-- Rescheduling Options -->
+            <tr>
+              <td style="margin-top: 20px; padding: 15px; border: 1px solid #ffe4ec; border-radius: 10px;">
+                <p style="color: #374151; font-size: 15px; text-align: center;">
+                  Need to reschedule? <a href="{{ reschedule_url }}" style="color: #FF97B0; font-weight: bold;">Click here</a> to modify your appointment.
+                </p>
+              </td>
+            </tr>
+
+            <!-- Support -->
+            <tr>
+              <td align="center" style="padding-top: 30px;">
+                <table cellpadding="0" cellspacing="0" border="0" style="background: #fff3cd; padding: 15px; border-radius: 5px; display: inline-block;">
+                  <tr>
+                    <td>
+                      <img src="https://img.icons8.com/?size=100&id=3156&format=png&color=ff9900" style="height: 20px; vertical-align: middle;" />
+                      <span style="font-size: 14px; color: #856404; margin-left: 10px;">
+                        Questions? Contact support: {{ support_email }} or {{ support_phone }}
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td style="padding-top: 30px; text-align: center; color: #6c757d; font-size: 13px;">
+                <p>© {{ current_year }} appointment app. All rights reserved.</p>
+                <p>123 Medical Drive, Suite 100, Health City, HC 12345</p>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

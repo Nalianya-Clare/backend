@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact US</title>
+  </head>
+  <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: white;">
+    <!-- Main Content -->
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td style="padding: 20px;">
+          <!-- Email Content -->
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <!-- Heading -->
+            <!-- <tr>
+              <td>
+                <h1 style="font-size: 1.8rem; font-weight: black; color: #7859a8; margin-bottom: 10px;">
+                  You're Registered! Welcome to {{ event }} at {{ organization }}
+                </h1>
+              </td>
+            </tr> -->
+            <!-- Greeting -->
+            <tr>
+              <td>
+                <p style="color: #333333; font-size: 16px;">Dear Admin,</p>
+                <p style="color: #333333; font-size: 16px;">
+                    The following user <strong>{{ firstname }} {{ lastname }}</strong> has submitted the following inquiry:
+                </p>
+              </td>
+            </tr>
+            <!-- Event Details -->
+            <tr>
+              <td style="background: #e8f0fe; padding: 10px; border-radius: 10px; margin-top: 20px;">
+                <h2 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">User Details</h2>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="vertical-align: middle; padding-bottom: 10px;">
+                      <img
+                        src="https://img.icons8.com/?size=100&id=84851&format=png&color=333333"
+                        style="height: 20px; width: 20px; vertical-align: middle;"
+                      />
+                      <span style="font-size: 16px; color: #333333;"><strong>Organization: </strong> {{ organization }}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle; padding-bottom: 10px;">
+                    <img
+                        src="https://img.icons8.com/?size=100&id=82767&format=png&color=333333"
+                        style="height: 22px; width: 22px; vertical-align: middle;"
+                      />
+                      <span style="font-size: 16px; color: #333333;"><strong>Email: </strong>{{ email }}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle;">
+                      <img
+                        src="https://img.icons8.com/?size=100&id=I2YCdf9e7rCR&format=png&color=333333"
+                        style="height: 22px; width: 22px; vertical-align: middle;"
+                      />
+                      <span style="font-size: 16px; color: #333333;"><strong>Phone Number: </strong>{{ phone_number }}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle; padding-bottom: 10px;">
+                      <img
+                        src="https://img.icons8.com/?size=100&id=Dq8O1EUueRIv&format=png&color=333333"
+                        style="height: 20px; width: 20px; vertical-align: middle;"
+                      />
+                      <span style="font-size: 16px; color: #333333;"><strong>Job Title: </strong> {{ job_title }}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle; padding-bottom: 10px;">
+                      <img
+                        src="https://img.icons8.com/?size=100&id=jjPxZal374bK&format=png&color=333333"
+                        style="height: 20px; width: 20px; vertical-align: middle;"
+                      />
+                      <span style="font-size: 16px; color: #333333;"><strong>Country: </strong> {{ country }}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle; padding-bottom: 10px;">
+                      <img
+                        src="https://img.icons8.com/?size=100&id=OKXXNn38cTcC&format=png&color=333333"
+                        style="height: 20px; width: 20px; vertical-align: middle;"
+                      />
+                      <span style="font-size: 16px; color: #333333;"><strong>Message: </strong> {{ message }}</span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+             <tr>
+              <td style="width: 100%; padding: 40px 0px; border-top: 1px solid #ddd; text-align: center;">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td>
+                      <!-- Social Icons -->
+                      <a
+                        href="https://www.facebook.com/#"
+                        target="_blank"
+                        style="text-decoration: none;"
+                      >
+                        <img
+                          src="https://img.icons8.com/?size=100&id=8818&format=png&color=7859A8"
+                          alt="facebook"
+                          style="height: 35px; width: 35px;"
+                        />
+                      </a>
+                      <a
+                        href="https://twitter.com/mlh_tc4a"
+                        target="_blank"
+                        style="text-decoration: none;"
+                      >
+                        <img
+                          src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=7859A8"
+                          alt="facebook"
+                          style="height: 35px; width: 35px;"
+                        />
+                      </a>
+                      <a
+                        href="https://www.instagram.com/#"
+                        target="_blank"
+                        style="text-decoration: none;"
+                      >
+                        <img
+                          src="https://img.icons8.com/?size=100&id=32309&format=png&color=7859A8"
+                          alt="instagram"
+                          style="height: 35px; width: 35px;"
+                        />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/company/medical-learning-hub/"
+                        target="_blank"
+                        style="text-decoration: none;"
+                      >
+                        <img
+                          src="https://img.icons8.com/?size=100&id=ZmG5l3ueI6FO&format=png&color=7859A8"
+                          alt="facebook"
+                          style="height: 35px; width: 35px;"
+                        />
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td >
+                      <p style="color: #7859a8;">
+                        <a
+                          href="#"
+                          target="_blank"
+                          style="color: #7859a8; text-decoration: none;"
+                        >
+                          About us
+                        </a>
+                        |
+                        <a
+                          href="#"
+                          target="_blank"
+                          style="color: #7859a8; text-decoration: none;"
+                        >
+                          Privacy
+                        </a>
+                        |
+                        <a
+                          href="#"
+                          target="_blank"
+                          style="color: #7859a8; text-decoration: none;"
+                        >
+                          Help center
+                        </a>
+                      </p>
+                      <p style="color: #7859a8;">&copy; Appointment App. All rights reserved.</p>
+                    </td>
+                  </tr>
+                </table>
+            </td>
+        </tr>
+      </table>
+    </body>
+  </html>
