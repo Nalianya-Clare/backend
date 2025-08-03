@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 import random
 from datetime import datetime
-from http import HTTPMethod
+from rest_framework.request import Request
 
 import requests
 from adrf.viewsets import ViewSet
@@ -204,17 +204,8 @@ class UsersView(AccountCustomView):
     queryset = User.objects.all().order_by('-date_joined')
     pagination_class = PageNumberPagination
     parser_classes = [MultiPartParser, FormParser, JSONParser]
+    search_fields = ['first_name', 'last_name', 'email', 'role', 'profession', 'phone']
 
-
-    # get user with proffesions only
-    @action(detail=False, methods=[HTTPMethod.GET], permission_classes=[AllowAny],)
-    def get_medical_staff(self, request, *args, **kwargs):
-        queryset = self.queryset.filter(is_medical_staff=True, is_approved_staff=True)
-        serializer = self.get_serializer(queryset, many=True)
-        response = success_response(status_code=status.HTTP_200_OK, message_code="get_data",
-                                    message={"data": serializer.data})
-        return Response(data=response, status=status.HTTP_200_OK)
-        
 
 class PasswordReset(GenericAPIView):
     serializer_class = EmailSerializer
@@ -262,7 +253,7 @@ class PasswordReset(GenericAPIView):
 
     def send_mail(self, user: get_user_model(), reset_password_url: str) -> None:
         try:
-            subject = "Your request to reset your Appointment App account password"
+            subject = "Your request to reset your MLH account password| MLH (Medical Learning hub)"
             template_name = "reset_password.html"
             current_year = datetime.now().year
             context = {

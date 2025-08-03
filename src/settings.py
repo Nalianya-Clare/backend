@@ -55,6 +55,9 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'django_celery_beat',
     'django_celery_results',
+    
+    'cloudinary_storage',
+    'cloudinary',
 
     # Documentation
     'drf_spectacular',
@@ -62,9 +65,8 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     'account.apps.AccountConfig',
-    'appointments.apps.AppointmentsConfig',
-    'walletApp.apps.WalletappConfig',
-    'blogs.apps.BlogsConfig',
+    'quiz.apps.QuizConfig',
+
 ]
 
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "dev")
@@ -248,6 +250,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'your_cloud_name'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', 'your_api_key'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', 'your_api_secret')
+}
+
+CLOUDINARY_CLOUD_NAME = os.environ.get('CLOUDINARY_CLOUD_NAME', 'your_cloud_name')
+CLOUDINARY_API_KEY = os.environ.get('CLOUDINARY_API_KEY', 'your_api_key')
+CLOUDINARY_API_SECRET = os.environ.get('CLOUDINARY_API_SECRET', 'your_api_secret')
+
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_5_CONFIGS = ckeditor_config()
 
@@ -259,14 +272,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Site Security
 CORS_ALLOWED_ORIGINS = [
     "https://myhela.africa",
+    "https://gynocare.vercel.app",
     "http://217.76.59.68:7070",
     "http://localhost:3000",          
-    "http://127.0.0.1:3000",             
+    "http://localhost:8080",          
+    "http://127.0.0.1:8080",             
     "https://myhela.vercel.app",         
+    "https://gynocare.vercel.app",        
     "http://localhost:5173",              
     "http://127.0.0.1:5173",
     "http://localhost:4173",
-    "http://217.76.59.68:4174/",
     "http://127.0.0.1:4173",
 ]
 CORS_ORIGIN_ALLOW_ALL = False
@@ -282,11 +297,14 @@ CSRF_COOKIE_SAMESITE = 'Lax'
 
 CSRF_TRUSTED_ORIGINS = [
      "https://myhela.africa",
-     "http://217.76.59.68:4174"
+    "https://gynocare.vercel.app",
     "http://217.76.59.68:7070",
     "http://localhost:3000",          
-    "http://127.0.0.1:3000",             
+    "http://127.0.0.1:3000",  
+       "http://localhost:8080",          
+    "http://127.0.0.1:8080",             
     "https://myhela.vercel.app",         
+    "https://gynocare.vercel.app",        
     "http://localhost:5173",              
     "http://127.0.0.1:5173",
     "http://localhost:4173",
@@ -323,8 +341,8 @@ GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET')
 GOOGLE_PROJECT_ID = os.environ.get('GOOGLE_PROJECT_ID')
 BASE_BACKEND_URL = os.environ.get('BASE_BACKEND_URL', 'http://localhost:8000')
-FRONT_END_URL = os.environ.get('FRONT_END_URL', 'http://localhost:3000')
-CONSOLE_URL = os.environ.get('FRONT_END_CONSOLE_URL', 'http://localhost:3000')
+FRONT_END_URL = os.environ.get('FRONT_END_URL', 'https://uat.medicallearninghub.africa')
+CONSOLE_URL = os.environ.get('FRONT_END_CONSOLE_URL', 'https://uat.console.medicallearninghub.africa')
 
 ADMIN_URL = os.environ.get('ADMIN_URL')
 

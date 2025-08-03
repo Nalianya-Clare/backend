@@ -98,13 +98,13 @@ def ckeditor_config():
 def jazzmin_config():
     jazzmin_setting = {
         # title of the window (Will default to current_admin_site.site_title if absent or None)
-        "site_title": "Appointment app",
+        "site_title": "CyberQuest",
 
         # Title on the login screen (19 char max) (defaults to current_admin_site.site_header if absent or None)
-        "site_header": "Appointment app console",
+        "site_header": "CyberQuest console",
 
         # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-        "site_brand": "Appointment app console",
+        "site_brand": "CyberQuest console",
 
         # Logo to use for your site, must be present in static files, used for brand on the top left
         "site_logo": "img/logo-mlh.png",
@@ -122,7 +122,7 @@ def jazzmin_config():
         "site_icon": None,
 
         # Welcome text on the login screen
-        "welcome_sign": "Welcome to Appointment app",
+        "welcome_sign": "Welcome to CyberQuest",
 
         # Copyright on the footer
         "copyright": "Tc4a",
@@ -301,8 +301,8 @@ def logging_config(base_dir):
 def api_docs_config() -> dict:
     """ API documentation setup script """
     SPECTACULAR_SETTINGS = {
-        'TITLE': 'Appointment app API Documentation',
-        'DESCRIPTION': 'Welcome to the Appointment app Backend API reference! It contains a guide on how to integrate our API and '
+        'TITLE': 'CyberQuest API Documentation',
+        'DESCRIPTION': 'Welcome to the CyberQuest Backend API reference! It contains a guide on how to integrate our API and '
                        'outlines important information to assist you through the integration process. The API is a REST '
                        'API over HTTP using JSON as the exchange format. It uses standard HTTP response codes, '
                        'authentication, and verbs.',

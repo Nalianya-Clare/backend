@@ -11,9 +11,9 @@ from rest_framework_simplejwt.authentication import JWTStatelessUserAuthenticati
 api = 'v1'
 schema_view = get_schema_view(
     openapi.Info(
-        title="appointment app API Documentation",
+        title="CyberQuest API Documentation",
         default_version='v1',
-        description='Welcome to the appointment app Backend API reference! It contains a guide on how to integrate our API and '
+        description='Welcome to the CyberQuest Backend API reference! It contains a guide on how to integrate our API and '
                     'outlines important information to assist you through the integration process. The API is a REST '
                     'API over HTTP using JSON as the exchange format. It uses standard HTTP response codes, '
                     'authentication, and verbs.',
@@ -40,9 +40,8 @@ third_party_urlpatterns = [
 urlpatterns = [
                 path('admin', admin.site.urls),
                 path(f'auth/{api}/', include('account.urls')),
-                path(f'appointments/{api}/', include('appointments.urls')),
-                path(f'wallet/{api}/', include('walletApp.urls')),
-                path(f'blogs/{api}/', include('blogs.urls')),
+                path(f'quiz/{api}/', include('quiz.urls')),
+
             ] + third_party_urlpatterns
 
 if settings.DEBUG:

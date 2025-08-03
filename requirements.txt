@@ -168,3 +168,4 @@ zipp
 zope.interface
 qrcode
 supervisor
+django-cloudinary-storage

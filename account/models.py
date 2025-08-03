@@ -7,7 +7,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from util.storage_location.utils import PublicMediaStorage
+from cloudinary_storage.storage import RawMediaCloudinaryStorage ,MediaCloudinaryStorage
 
 
 class UserManager(BaseUserManager):
@@ -103,7 +103,7 @@ class User(AbstractUser, PermissionsMixin):
 
     profile_picture = models.ImageField(_('Profile picture'), default='', null=True, blank=True,
                                         upload_to="uploads/user/profile/",
-                                        storage=PublicMediaStorage())
+                                        storage=MediaCloudinaryStorage())
     gender = models.CharField(max_length=20, choices=GENDER, null=True, blank=True)
     profession = models.CharField(max_length=50, choices=PROFESSION, null=True, blank=True)
     verified = models.BooleanField(default=False)

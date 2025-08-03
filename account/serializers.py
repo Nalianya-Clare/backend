@@ -227,7 +227,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ['id', 'email', 'first_name', 'last_name', 'phone', "profile_picture",
-                  'role','gender', 'profession', 'is_active', 'meeting_url'
+                  'role','gender', 'profession', 'is_active', 'meeting_url', 'is_medical_staff','is_approved_staff', 
                   ]
     
  
@@ -442,7 +442,7 @@ def send_account_creation_email(
     
     password_expiry_days = settings.PASSWORD_EXPIRY_DAYS
     template_name = "account_creation.html"
-    subject = f"{user.first_name}, Thank you for joining appointment app."
+    subject = f"{user.first_name}, Thank you for joining CyberQuest."
 
     email = user.email
     if role == User.USER:
