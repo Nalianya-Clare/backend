@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (
     CategoryViewSet, QuizViewSet, LeaderboardViewSet, BadgeViewSet,
-    UserProgressView, QuizGameViewSet
+    UserProgressView, QuizGameViewSet,ResourceViewSet
 )
 
 app_name = 'quiz'
@@ -14,6 +14,7 @@ router.register(r'quizzes', QuizViewSet, basename='quizzes')
 router.register(r'leaderboard', LeaderboardViewSet, basename='leaderboard')
 router.register(r'badges', BadgeViewSet, basename='badges')
 router.register(r'game', QuizGameViewSet, basename='game')
+router.register(r'resources', ResourceViewSet, basename='resources')
 
 urlpatterns = [
     # Router URLs

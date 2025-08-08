@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import (
     Category, Quiz, Question, Answer, QuizAttempt, UserAnswer,
-    Badge, UserBadge, UserProgress, Leaderboard
+    Badge, UserBadge, UserProgress, Leaderboard, Resource
 )
 
 
@@ -208,3 +208,9 @@ class CreateQuizSerializer(serializers.ModelSerializer):
                 Answer.objects.create(question=question, **answer_data)
         
         return quiz
+
+
+class ResourceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Resource
+        fields = '__all__'

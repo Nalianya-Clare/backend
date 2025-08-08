@@ -10,14 +10,14 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework_simplejwt.authentication import JWTStatelessUserAuthentication
-
+from rest_framework.parsers import MultiPartParser, FormParser
 from .models import (
-    Category, Quiz, Question, Answer, QuizAttempt, UserAnswer,
+    Category, Quiz, Question, Answer, QuizAttempt, Resource, UserAnswer,
     Badge, UserBadge, UserProgress
 )
 from .serializers import (
     CategorySerializer, QuizListSerializer, QuizDetailSerializer,
-    QuizAttemptSerializer, UserAnswerSerializer, BadgeSerializer,
+    QuizAttemptSerializer, ResourceSerializer, UserAnswerSerializer, BadgeSerializer,
     UserBadgeSerializer, UserProgressSerializer,
     StartQuizSerializer, SubmitAnswerSerializer,
     CreateQuizSerializer
@@ -35,7 +35,10 @@ class QuizCustomView(ModelViewSet):
     def get_actual_user(self, request):
         """Get actual User instance from database to avoid TokenUser issues"""
         from account.models import User
-        return User.objects.get(id=request.user.id)
+        try:
+            return User.objects.get(id=request.user.id)
+        except User.DoesNotExist:
+            return None
 
     def create(self, request, *args, **kwargs):
         """Create resource"""
@@ -98,7 +101,19 @@ class QuizCustomView(ModelViewSet):
         )
         return Response(response, status=status.HTTP_200_OK)
 
+class ResourceViewSet(QuizCustomView):
+    """Resource upload endpoints (PDF, images, text)"""
+    queryset = Resource.objects.all()
+    serializer_class = ResourceSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    parser_classes = (MultiPartParser, FormParser)
 
+    # http_method_names = ['post', 'get', 'head']
+
+    def get_queryset(self):
+        # Optionally filter by quiz or user if needed
+        return super().get_queryset()
+    
 class CategoryViewSet(QuizCustomView):
     """Category management endpoints"""
     queryset = Category.objects.all()

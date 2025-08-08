@@ -1,5 +1,6 @@
 from django.db import models
 from account.models import User
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
 
 class Category(models.Model):
@@ -204,3 +205,11 @@ class Leaderboard(models.Model):
     
     def __str__(self):
         return f"{self.user.email} - {self.period} - Rank {self.rank}"
+
+
+class Resource(models.Model):
+    quiz = models.ForeignKey('Quiz', on_delete=models.CASCADE, related_name='resources', null=True, blank=True)
+    raw_file = models.FileField(upload_to='raw/', blank=True, storage=RawMediaCloudinaryStorage())
+    image = models.ImageField(upload_to='images/', blank=True)  # Uses default storage
+    description = models.TextField(blank=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
