@@ -133,9 +133,9 @@ SPECTACULAR_SETTINGS = config.api_docs_config()
 
 # Middlewares
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -285,35 +285,21 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:4173",
     "chrome-extension://njbpngbkjfjmoadndnbneaejachkcdpm"
 ]
+# ✅ Allow ALL CORS requests
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = False
+CORS_ALLOW_CREDENTIALS = False  # If you need cookies, set this to True
 
+# ✅ Loosen cookie settings (works for HTTP and HTTPS)
 SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_HTTPONLY = False
-SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = None  # None means no restriction
 
-CSRF_COOKIE_SECURE = False  # Ensure CSRF cookie is only sent over HTTPS
-CSRF_COOKIE_HTTPONLY = False  # Ensure CSRF cookie is accessible only via HTTP(S) requests
-CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SAMESITE = None
 
-CSRF_TRUSTED_ORIGINS = [
-     "https://myhela.africa",
-    "https://gynocare.vercel.app",
-    "http://217.76.59.68:7070",
-    "http://localhost:3000",          
-    "http://127.0.0.1:3000",  
-       "http://localhost:8080",          
-    "http://127.0.0.1:8080",             
-    "https://myhela.vercel.app",    
-    "http://217.76.59.68:4000",     
-    "https://gynocare.vercel.app",        
-    "http://localhost:5173",              
-    "http://127.0.0.1:5173",
-    "http://localhost:4173",
-    "http://127.0.0.1:4173",
-    "chrome-extension://njbpngbkjfjmoadndnbneaejachkcdpm"
+CSRF_TRUSTED_ORIGINS = ["*"]
 
-]
 
 # prevent cross-site scripting attacks
 CSP_IMG_SRC = ("'self'",)
