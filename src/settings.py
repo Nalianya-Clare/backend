@@ -133,6 +133,8 @@ SPECTACULAR_SETTINGS = config.api_docs_config()
 
 # Middlewares
 MIDDLEWARE = [
+    "middleware.disable_csrf.DisableCSRFMiddleware",  # must be before CsrfViewMiddleware
+
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
