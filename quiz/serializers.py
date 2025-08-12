@@ -39,7 +39,7 @@ class QuizListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
         fields = ['id', 'title', 'description', 'category', 'category_name', 'difficulty', 
-                 'time_limit', 'total_questions', 'pass_score', 'points_reward', 
+                 'time_limit', 'total_questions', 'pass_score', 'points_reward', 'start_time',
                  'created_by_name', 'created_at', 'question_count']
         read_only_fields = ['created_at']
     
@@ -186,8 +186,8 @@ class CreateQuizSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
         fields = ['title', 'description', 'category', 'difficulty', 'time_limit',
-                 'total_questions', 'pass_score', 'points_reward', 'questions_data']
-    
+                 'total_questions', 'pass_score', 'start_time', 'points_reward', 'questions_data']
+
     def create(self, validated_data):
         from account.models import User
         

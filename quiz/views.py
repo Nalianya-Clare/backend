@@ -113,7 +113,27 @@ class ResourceViewSet(QuizCustomView):
     def get_queryset(self):
         # Optionally filter by quiz or user if needed
         return super().get_queryset()
-    
+    @action(
+        detail=False,
+        methods=['get'],
+        url_path=r'by-quiz/(?P<quiz_id>[0-9]+)',
+        permission_classes=[permissions.AllowAny]
+    )
+
+    def get_resource_by_quiz_id(self, request, quiz_id=None):
+        """Get resources associated with a specific quiz"""
+        resources = self.queryset.filter(id=quiz_id)
+
+        serializer = self.get_serializer(resources, many=True)
+        response = success_response(
+            status_code=status.HTTP_200_OK,
+            message_code="get_data",
+            message={
+                "quiz_id": quiz_id,
+                "resources": serializer.data
+            }
+        )
+        return Response(response, status=status.HTTP_200_OK)
 class CategoryViewSet(QuizCustomView):
     """Category management endpoints"""
     queryset = Category.objects.all()
@@ -144,6 +164,7 @@ class QuizViewSet(QuizCustomView):
     search_fields = ['title', 'description']
     ordering_fields = ['title', 'created_at', 'difficulty']
     ordering = ['-created_at']
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_serializer_class(self):
         if self.action == 'retrieve':

@@ -36,6 +36,7 @@ class Quiz(models.Model):
     total_questions = models.PositiveIntegerField(default=10)
     pass_score = models.PositiveIntegerField(default=70, help_text="Percentage needed to pass")
     points_reward = models.PositiveIntegerField(default=10)
+    start_time = models.DateTimeField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_quizzes')
     created_at = models.DateTimeField(auto_now_add=True)
