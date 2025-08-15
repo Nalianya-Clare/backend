@@ -272,6 +272,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "https://myhela.africa",
     "http://217.76.59.68:4000",
+    "http://84.247.167.2:4000",
     "https://gynocare.vercel.app",
     "http://217.76.59.68:7070",
     "http://localhost:3000",          
@@ -300,6 +301,7 @@ CSRF_TRUSTED_ORIGINS = [
      "https://myhela.africa",
     "https://gynocare.vercel.app",
     "http://217.76.59.68:7070",
+    "http://84.247.167.2:4000",
     "http://localhost:3000",          
     "http://127.0.0.1:3000",  
        "http://localhost:8080",          
