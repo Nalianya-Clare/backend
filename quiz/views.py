@@ -122,7 +122,7 @@ class ResourceViewSet(QuizCustomView):
 
     def get_resource_by_quiz_id(self, request, quiz_id=None):
         """Get resources associated with a specific quiz"""
-        resources = self.queryset.filter(id=quiz_id)
+        resources = self.queryset.filter(quiz=quiz_id)
 
         serializer = self.get_serializer(resources, many=True)
         response = success_response(
