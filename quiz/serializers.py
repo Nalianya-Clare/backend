@@ -55,7 +55,7 @@ class QuizDetailSerializer(serializers.ModelSerializer):
         model = Quiz
         fields = ['id', 'title', 'description', 'category', 'category_name', 'difficulty',
                  'time_limit', 'total_questions', 'pass_score', 'points_reward',
-                 'questions', 'created_at']
+                 'questions', 'created_at', 'start_time']
         read_only_fields = ['created_at']
 
 
